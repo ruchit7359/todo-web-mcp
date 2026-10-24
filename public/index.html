@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f4f4; color: #161616; }
+    main { max-width: 640px; margin: 0 auto; padding: 24px; display: grid; gap: 24px; grid-template-columns: 1fr; }
+    h1 { grid-column: 1 / -1; margin: 0; font-size: 1.5rem; }
+    section { background: #fff; padding: 16px; border-radius: 4px; }
+    h2 { margin-top: 0; font-size: 1rem; }
+    .banner { grid-column: 1 / -1; padding: 10px 14px; border-radius: 4px; font-size: 0.9rem; }
+    .banner.ok { background: #defbe6; }
+    .banner.bad { background: #fff1f1; }
+    .banner[hidden] { display: none; }
+    form { display: flex; gap: 8px; margin-bottom: 12px; }
+    input[type=text] { flex: 1; padding: 8px; border: 1px solid #8d8d8d; }
+    button { padding: 8px 12px; border: 0; background: #0f62fe; color: #fff; cursor: pointer; }
+    button.secondary { background: #525252; }
+    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+    .meta { font-size: 0.8rem; color: #525252; }
+    ul { list-style: none; padding: 0; margin: 0 0 12px; }
+    li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e0e0e0; }
+    li span { flex: 1; }
+    li.done span { text-decoration: line-through; color: #6f6f6f; }
+    li small { color: #6f6f6f; }
+    li.flash { animation: flash 1.5s ease-out; }
+    @keyframes flash { from { background: #fcf4d6; } to { background: transparent; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Todo</h1>
+    <div id="error" class="banner bad" hidden></div>
+
+    <section>
+      <h2>Tasks</h2>
+      <form id="add-form">
+        <input type="text" id="task-input" placeholder="New task" required>
+        <button type="submit">Add</button>
+      </form>
+      <ul id="task-list"></ul>
+      <button class="secondary" id="clear-done" type="button">Clear completed</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
